@@ -9,6 +9,7 @@ This document introduces an automation tool for SAP Basis person on provision of
 ## Description
 
 During the exercise, participants will be able to provision a landscape into Azure for SAP environment and then build a fresh SAP S4H system by using an existing backup files into this environment as shown in the following diagram. SAP HANA DB will use Azure Netapp Filesystem for storage volume. 
+
 ![image](https://user-images.githubusercontent.com/73615525/115279764-f99d4080-a0fb-11eb-9e56-d43ee96fe173.png)
 
 ## Success Criteria
