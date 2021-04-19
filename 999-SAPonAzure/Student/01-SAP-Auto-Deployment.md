@@ -18,11 +18,17 @@ During the exercise, participants will be able to provision a landscape into Azu
 ## Steps
 
 Step 1: Identify your Group number XX (which will be used later for configurations)
+
 Step 2: Open Azure Portal, Powershell Window. Run the following command to create Service Principle and save the Password to Notepad
+
 $sp = New-AzADServicePrincipal -DisplayName AutoSAPDeployAdmin
+
 $Ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($sp.Secret)
+
 $password = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($Ptr)
+
 Write-output $password
+
 Step 3: Open Azure Portal, record the Azure Subscription ID and save to Notepad
 Step 4: In Azure Portal, go to Azure Active Directory App Registration select Service Principle “AutoSAPDeployAdminXX”  record Application (client) ID and Directory (tenant) ID field to Notepad
 Step 5: Provision an ubuntu linux server through Azure portal (18.04 LTS, SKU: Standard DS1 v2) with named user “azureuser” and password “Welcome!2345”. You will start all the Azure infrastructure provision from this server.
