@@ -9,6 +9,7 @@ This document introduces an automation tool for SAP Basis person on provision of
 ## Description
 
 During the exercise, participants will be able to provision a landscape into Azure for SAP environment and then build a fresh SAP S4H system by using an existing backup files into this environment as shown in the following diagram. SAP HANA DB will use Azure Netapp Filesystem for storage volume. 
+![image](https://user-images.githubusercontent.com/73615525/115279764-f99d4080-a0fb-11eb-9e56-d43ee96fe173.png)
 
 ## Success Criteria
 
@@ -22,20 +23,33 @@ Step 1: Identify your Group number XX (which will be used later for configuratio
 Step 2: Open Azure Portal, Powershell Window. Run the following command to create Service Principle and save the Password to Notepad
 
 $sp = New-AzADServicePrincipal -DisplayName AutoSAPDeployAdmin 
+
 $Ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($sp.Secret) 
+
 $password = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($Ptr) 
+
 Write-output $password
 
 Step 3: Open Azure Portal, record the Azure Subscription ID and save to Notepad
+
 Step 4: In Azure Portal, go to Azure Active Directory App Registration select Service Principle “AutoSAPDeployAdminXX”  record Application (client) ID and Directory (tenant) ID field to Notepad
+
 Step 5: Provision an ubuntu linux server through Azure portal (18.04 LTS, SKU: Standard DS1 v2) with named user “azureuser” and password “Welcome!2345”. You will start all the Azure infrastructure provision from this server.
+
 Step 6: Login to the server as the named user “azureuser” and run the following commands:
+
 % mkdir TST200/
+
 % cd TST200/	 
+
 % wget “ [Coach will provide the package_url ]
+
 % gzip -d  ophk.tar .gz
+
 % tar xf  ophk.tar	 
+
 % ./local_setup_env.sh  
+
 Step 7: Edit the following parameters in the “main.inputs” file in the TST200 directory: In the azure_login section, replace all the “xxxxx” with the data taken down from step 2-4. 
  subscription_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
  client_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"	 
