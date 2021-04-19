@@ -22,11 +22,8 @@ Step 1: Identify your Group number XX (which will be used later for configuratio
 Step 2: Open Azure Portal, Powershell Window. Run the following command to create Service Principle and save the Password to Notepad
 
 $sp = New-AzADServicePrincipal -DisplayName AutoSAPDeployAdmin
-
 $Ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($sp.Secret)
-
 $password = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($Ptr)
-
 Write-output $password
 
 Step 3: Open Azure Portal, record the Azure Subscription ID and save to Notepad
